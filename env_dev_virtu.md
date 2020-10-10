@@ -4,5 +4,9 @@ Le principe de cet installation va nous permettre de créer, modifier et execute
 ## Résumer de ce que nous allons mettre en place
 Sur notre PC, nous allons installer les logiciels VirtualBox et VSCode. VirtualBox permettra de faire tourner une machine virtuelle ubuntu, cette dernière accueillera tout les packages de developpement et serveur web. VSCode nous permettra de modifier/créer et executer le code situé sur l'Ubuntu à partir de notre PC.
 
-## 1ère étape, installer VirtualBox
+## 1ère étape, sur l'hôte, installer VirtualBox
+Pour télécharger Vbox, il suffit de se rendre sur la page officiel et de télécharger l'installateur ET le pack d'extension (ce pack permet d'utiliser certaines fonctionnalités à partir des VM) :
+```bash
+https://www.virtualbox.org/wiki/Downloads
+```
 
