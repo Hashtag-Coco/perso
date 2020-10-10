@@ -21,5 +21,5 @@ il faut cliquer sur **Fichier**, **Paramètres**, **Extensions**, cliquer sur le
 
 ## 2ème étape, sur l'hôte, installer VSCode et son module SSH :
 Pour télécharger VSCode, il suffit de se rendre sur la page officiel et de télécharger l'installateur :</br>
-<a href="https://code.visualstudio.com/download"></br>
+<a href="https://code.visualstudio.com/download" title="vscode"></a></br>
 hey
