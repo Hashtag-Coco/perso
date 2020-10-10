@@ -35,12 +35,12 @@ on décide de **Créer un disque dur virtuel maintenant**. On laisse le type de 
 **Dynamiquement alloué** (si on alloue 50Go à la VM et qu'elle utilise seulement 5 Go, elle ne prendra pas les 45Go restants pour elle). En emplace du fichier et 
 taille nous laissons par défaut les valeurs (10Go me suffit emplement pour moi). </br>
 [image5]
-Et voila notre VM est créée, lorsque l'on va la démarrer (**démarrage**, **démarrage normal**) nous aurons une pop up pour aller chercher l'iso d'Ubuntu. Après cela,
+</br>Et voila notre VM est créée, lorsque l'on va la démarrer (**démarrage**, **démarrage normal**) nous aurons une pop up pour aller chercher l'iso d'Ubuntu. Après cela,
 il faut simplement installer Ubuntu (les tuto sont légions sur l'internet).</br>
 [image6]
 
 ## 4ème étape, configuration Ubuntu :
-Sur mon Ubuntu, j'ai un utilisateur test/test, nous allons installer les packages néc éssaires pour le SSH et LAMP (également des modules de PHP) :
+Sur mon Ubuntu, j'ai un utilisateur test/test, nous allons installer les packages nécéssaires pour le SSH et LAMP (également des modules de PHP) :
 ```bash
 sudo apr install -y openssh-server apache2 php php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip mysql-server phpmyadmin 
 ```
