@@ -9,4 +9,7 @@ Pour télécharger Vbox, il suffit de se rendre sur la page officiel et de tél�
 ```bash
 https://www.virtualbox.org/wiki/Downloads
 ```
+[image1]
 
+Pour installer Vbox, il suffit d'exécuter l'exécutable, c'est une installation classique. Pour installer le pack d'extension, dans VirtualBox
+il faut
