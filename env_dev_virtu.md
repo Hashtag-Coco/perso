@@ -39,11 +39,13 @@ taille nous laissons par défaut les valeurs (10Go me suffit emplement pour moi)
 il faut simplement installer Ubuntu (les tuto sont légions sur l'internet).</br>
 [image6]
 
-## 4ème étape, configuration Ubuntu :
+## 4ème étape, sur la vm, configuration Ubuntu :
 Sur mon Ubuntu, j'ai un utilisateur test/test, nous allons installer les packages nécéssaires pour le SSH et LAMP (également des modules de PHP) :
 ```bash
 sudo apr install -y openssh-server apache2 php php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip mysql-server phpmyadmin 
 ```
 Maintenant que Ubuntu est configuré, il faut faire la config réseau et la config VSCode.
 
-##
+## 5ème étape, sur l'hôte, réseau privé pour l'hôte et la vm :
+Nous allons créer un réseau seulement pour l'hôte et la vm, de ce fait, seul notre PC aura accès à la VM.</br>
+Pour ce faire, 
