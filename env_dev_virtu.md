@@ -9,10 +9,8 @@ Avant de faire la configuration système, nous testerons la connectivité entre 
 
 ## 1ère étape, sur l'hôte, installer VirtualBox
 Pour télécharger Vbox, il suffit de se rendre sur la page officiel et de télécharger l'installateur **ET** le pack d'extension (ce pack permet d'utiliser certaines 
-fonctionnalités à partir des VM) :
-```bash
-https://www.virtualbox.org/wiki/Downloads
-```
+fonctionnalités à partir des VM) :</br>
+<https://www.virtualbox.org/wiki/Downloads></br>
 [image1]
 
 Pour installer Vbox, il suffit d'exécuter l'exécutable, c'est une installation classique. Pour installer le pack d'extension, dans VirtualBox
@@ -22,4 +20,8 @@ il faut cliquer sur **Fichier**, **Paramètres**, **Extensions**, cliquer sur le
 ## 2ème étape, sur l'hôte, installer VSCode et son module SSH :
 Pour télécharger VSCode, il suffit de se rendre sur la page officiel et de télécharger l'installateur :</br>
 <https://code.visualstudio.com/download></br>
-hey
+Pour l'installer, idem que Vbox, cliquer sur l'installateur et installer. Pour installer le module SSH, il faut ouvrir VSCode et cliquer sur 
+**Extensions**, inscrire dans la barre de recherche **SSH** et installer **Remote - SSH** :</br>
+[image4]
+
+Nous verrons plus tard comment se connecter en SSH à la VM.
