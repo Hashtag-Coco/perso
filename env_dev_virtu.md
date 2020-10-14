@@ -35,17 +35,74 @@ on décide de **Créer un disque dur virtuel maintenant**. On laisse le type de 
 **Dynamiquement alloué** (si on alloue 50Go à la VM et qu'elle utilise seulement 5 Go, elle ne prendra pas les 45Go restants pour elle). En emplace du fichier et 
 taille nous laissons par défaut les valeurs (10Go me suffit emplement pour moi). </br>
 [image5]
-</br>Et voila notre VM est créée, lorsque l'on va la démarrer (**démarrage**, **démarrage normal**) nous aurons une pop up pour aller chercher l'iso d'Ubuntu. Après cela,
+</br>
+Et voila notre VM est créée, lorsque l'on va la démarrer (**démarrage**, **démarrage normal**) nous aurons une pop up pour aller chercher l'iso d'Ubuntu. Après cela,
 il faut simplement installer Ubuntu (les tuto sont légions sur l'internet).</br>
 [image6]
 
 ## 4ème étape, sur la vm, configuration Ubuntu :
-Sur mon Ubuntu, j'ai un utilisateur test/test, nous allons installer les packages nécéssaires pour le SSH et LAMP (également des modules de PHP) :
+Sur mon Ubuntu, j'ai un utilisateur test/test et root/toor (pour changer le mdp de root, c'est ci-dessous), nous allons installer les packages nécéssaires pour le SSH et LAMP (également des modules de PHP) :
 ```bash
-sudo apr install -y openssh-server apache2 php php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip mysql-server phpmyadmin 
+sudo apt install -y openssh-server apache2 php php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip mysql-server phpmyadmin
+sudo sed -i 's/foo/bar/g' # allow root en ssh
+```
+Pour modifier le mot de passe de root :
+```bash
+$ sudo /bin/bash
+$ passwd
 ```
 Maintenant que Ubuntu est configuré, il faut faire la config réseau et la config VSCode.
 
 ## 5ème étape, sur l'hôte, réseau privé pour l'hôte et la vm :
 Nous allons créer un réseau seulement pour l'hôte et la vm, de ce fait, seul notre PC aura accès à la VM.</br>
-Pour ce faire, 
+Pour ce faire, après avoir VirtualBox, cliquer sur Fichier, Gestionnaire de réseau hôte, Créer, adresse IPv4 : 172.16.0.1, puis dans l'onglet Serveur DHCP, mettre le serveur en .100 et 2 à 10 en adresses distribuées :</br>
+[image 7 a 10]
+</br>
+Maintenant, il faut associer la VM à ce réseau, clique droit sur la VM, Configurations, Réseau, Mode d'accès réseau : Réseau privé hôte, en Nom il faut mettre la carte que l'on a configuré précédemment :</br>
+[image 11 à 12]
+</br>
+
+## 6ème étape, vérifier la connectivité :
+Maintenant en rallumant la VM, elle prend une adresse IP entre 172.16.0.2 et 172.16.0.10, l'hôte étant en 172.16.0.1, nous allons tester le ping entre les deux :
+### Sur la vm :
+```bash
+$ ip a s
+$ ping 172.16.0.1
+```
+### Sur l'hôte :
+```bash
+C:/> ping 172.16.0.2
+```
+La connection entre les deux s'effectue bien, nous pouvons même accéder depuis l'hôte au site web dispo de la VM en rendant visite à <http://172.16.0.2/>.
+/!\ Attention, je rappel que sur un Windows 10 et serveur 2016, le port de réponse ICMP est désactivé par défaut. Donc à ce stade, si vous n'avez jamais fait l'ouverture de ces ports, c'est normal que le ping du Windows au Linux fonctionne
+mais que l'inverse ne fonctionne pas. (Généralement à l'école on désactive le pare-feu, ce n'est absolument pas la solution, la bonne solution est l'ouverture du port ICMP en écoute.).
+
+## 7ème et dernière étape, sur l'hôte, configuration de VSCode :
+On lance VSCode, cliquer sur Remote Explorer, Add new, on met la commande ssh : ssh root@172.16.0.2, on laisse par défaut la première ligne on appuit juste
+ sur entrer.</br>
+[image 13 a 15]
+</br>
+Maintenant il suffit juste de cliquer sur le répertoire Connect to Host in New Window (il demandera le mot de passe de l'utilisateur qu'on a spécifié plus tôt) :</br>
+[image16]
+</br>
+(pour accéder au terminal, il suffit d'aller sur l'onglet terminal de la nouvelle fenetre qui s'est ouverte) :
+[image17]
+## Pour Créer un fichier, l'éditer et voir son résultat :
+Sur le terminal de VSCode, nous allons dans /var/www/html pour créer le fichier :
+```bash
+$ cd /var/www/html
+$ touch mapage.php
+```
+Puis nous l'ouvrons dans VSCode, cliquer sur File, Open File et entrer le chemin jusqu'au fichier :</br>
+[img 18 et 19]
+</br>
+Nous remplissons alors le fichier avec du code php :</br>
+[img 20]
+</br>
+Après avoir sauvegardé (ctrl + s), nous nous rendons sur <http://172.16.0.2/mapage.php> pour voir si cela fonctionne :</br>
+[]
+</br>
+Et voila, le code fonctionne.
+
+## Transfert de fichier de l'hôte à la vm :
+WINscp à venir...
