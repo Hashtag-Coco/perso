@@ -55,7 +55,7 @@ Maintenant que Ubuntu est configuré, il faut faire la config réseau et la conf
 
 ## 5ème étape, sur l'hôte, réseau privé pour l'hôte et la vm :
 Nous allons créer un réseau seulement pour l'hôte et la vm, de ce fait, seul notre PC aura accès à la VM.</br>
-Pour ce faire, après avoir VirtualBox, cliquer sur Fichier, Gestionnaire de réseau hôte, Créer, adresse IPv4 : 172.16.0.1, puis dans l'onglet Serveur DHCP, mettre le serveur en .100 et 2 à 10 en adresses distribuées :</br>
+Pour ce faire, après avoir VirtualBox, cliquer sur **Fichier**, **Gestionnaire de réseau hôte**, **Créer**, adresse IPv4 : **172.16.0.1**, puis dans l'onglet **Serveur DHCP**, mettre le serveur en .100 et 2 à 10 en adresses distribuées :</br>
 [image 7 a 10]
 </br>
 Maintenant, il faut associer la VM à ce réseau, clique droit sur la VM, Configurations, Réseau, Mode d'accès réseau : Réseau privé hôte, en Nom il faut mettre la carte que l'on a configuré précédemment :</br>
