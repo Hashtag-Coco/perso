@@ -11,7 +11,7 @@ Avant de faire la configuration système, nous testerons la connectivité entre 
 Pour télécharger Vbox, il suffit de se rendre sur la page officiel et de télécharger l'installateur **ET** le pack d'extension (ce pack permet d'utiliser certaines 
 fonctionnalités à partir des VM) :</br>
 <https://www.virtualbox.org/wiki/Downloads></br>
-[image1]
+![Pic1](img/1.PNG?raw=true)
 
 Pour installer Vbox, il suffit d'exécuter l'exécutable, c'est une installation classique. Pour installer le pack d'extension, dans VirtualBox
 il faut cliquer sur **Fichier**, **Paramètres**, **Extensions**, cliquer sur le **+** et ajouter l'extension pack :</br>
@@ -114,7 +114,7 @@ Après avoir exécuté, il faut remplir les champs **Nom d'hôte**, **Nom d'util
 connecter sur la VM en SSH :</br>
 [img 22]
 </br>
-Maintenant, sur la droite nous allons naviguer jusqu'a /var/www/html et sur la gauche à l'emplacement où se trouve mon dossier hello :</br>
+Maintenant, sur la droite nous allons naviguer jusqu'a **/var/www/html** et sur la gauche à l'emplacement où se trouve mon dossier hello :</br>
 [img 23]
 </br>
 Nous avons juste à Drag&Drop le dossier **hello** de gauche à droite pour le copier sur la VM.</br>
