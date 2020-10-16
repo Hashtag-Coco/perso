@@ -43,8 +43,9 @@ il faut simplement installer Ubuntu (les tuto sont légions sur l'internet).</br
 ## 4ème étape, sur la vm, configuration Ubuntu :
 Sur mon Ubuntu, j'ai un utilisateur test/test et root/toor (pour changer le mdp de root, c'est ci-dessous), nous allons installer les packages nécéssaires pour le SSH et LAMP (également des modules de PHP) :
 ```bash
-sudo apt install -y openssh-server apache2 php php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip mysql-server phpmyadmin
-sudo sed -i 's/foo/bar/g' # allow root en ssh
+sudo apt install -y openssh-server apache2 php php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip mysql-server
+sudo apt install -y phpmyadmin
+sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config # allow root en ssh
 ```
 Pour modifier le mot de passe de root :
 ```bash
@@ -58,7 +59,7 @@ Nous allons créer un réseau seulement pour l'hôte et la vm, de ce fait, seul 
 Pour ce faire, après avoir VirtualBox, cliquer sur **Fichier**, **Gestionnaire de réseau hôte**, **Créer**, adresse IPv4 : **172.16.0.1**, puis dans l'onglet **Serveur DHCP**, mettre le serveur en .100 et 2 à 10 en adresses distribuées :</br>
 [image 7 a 10]
 </br>
-Maintenant, il faut associer la VM à ce réseau, clique droit sur la VM, Configurations, Réseau, Mode d'accès réseau : Réseau privé hôte, en Nom il faut mettre la carte que l'on a configuré précédemment :</br>
+Maintenant, il faut associer la VM à ce réseau, clique droit sur la VM, **Configurations**, **Réseau**, **Mode d'accès réseau** : **Réseau privé hôte**, en Nom il faut mettre la carte que l'on a configuré précédemment :</br>
 [image 11 à 12]
 </br>
 
@@ -71,21 +72,21 @@ $ ping 172.16.0.1
 ```
 ### Sur l'hôte :
 ```bash
-C:/> ping 172.16.0.2
+C:/> ping 172.16.0.3
 ```
-La connection entre les deux s'effectue bien, nous pouvons même accéder depuis l'hôte au site web dispo de la VM en rendant visite à <http://172.16.0.2/>.
+La connection entre les deux s'effectue bien, nous pouvons même accéder depuis l'hôte au site web dispo de la VM en rendant visite à <http://172.16.0.3/>.
 /!\ Attention, je rappel que sur un Windows 10 et serveur 2016, le port de réponse ICMP est désactivé par défaut. Donc à ce stade, si vous n'avez jamais fait l'ouverture de ces ports, c'est normal que le ping du Windows au Linux fonctionne
 mais que l'inverse ne fonctionne pas. (Généralement à l'école on désactive le pare-feu, ce n'est absolument pas la solution, la bonne solution est l'ouverture du port ICMP en écoute.).
 
 ## 7ème et dernière étape, sur l'hôte, configuration de VSCode :
-On lance VSCode, cliquer sur Remote Explorer, Add new, on met la commande ssh : ssh root@172.16.0.2, on laisse par défaut la première ligne on appuit juste
+On lance VSCode, cliquer sur **Remote Explorer**, **Add new**, on met la commande ssh : **ssh root@172.16.0.3**, on laisse par défaut la première ligne on appuit juste
  sur entrer.</br>
 [image 13 a 15]
 </br>
-Maintenant il suffit juste de cliquer sur le répertoire Connect to Host in New Window (il demandera le mot de passe de l'utilisateur qu'on a spécifié plus tôt) :</br>
+Maintenant il suffit juste de cliquer sur le répertoire **Connect to Host in New Window** (il demandera le mot de passe de l'utilisateur qu'on a spécifié plus tôt) :</br>
 [image16]
 </br>
-(pour accéder au terminal, il suffit d'aller sur l'onglet terminal de la nouvelle fenetre qui s'est ouverte) :
+(pour accéder au terminal, il suffit d'aller sur l'onglet **view** puis **terminal** de la nouvelle fenetre qui s'est ouverte) :
 [image17]
 ## Pour Créer un fichier, l'éditer et voir son résultat :
 Sur le terminal de VSCode, nous allons dans /var/www/html pour créer le fichier :
@@ -93,16 +94,29 @@ Sur le terminal de VSCode, nous allons dans /var/www/html pour créer le fichier
 $ cd /var/www/html
 $ touch mapage.php
 ```
-Puis nous l'ouvrons dans VSCode, cliquer sur File, Open File et entrer le chemin jusqu'au fichier :</br>
+Puis nous l'ouvrons dans VSCode, cliquer sur **File**, **Open File** et entrer le chemin jusqu'au fichier :</br>
 [img 18 et 19]
 </br>
 Nous remplissons alors le fichier avec du code php :</br>
 [img 20]
 </br>
-Après avoir sauvegardé (ctrl + s), nous nous rendons sur <http://172.16.0.2/mapage.php> pour voir si cela fonctionne :</br>
-[]
+Après avoir sauvegardé (ctrl + s), nous nous rendons sur <http://172.16.0.3/mapage.php> pour voir si cela fonctionne :</br>
+[img 21]
 </br>
-Et voila, le code fonctionne.
+Et voila, le code php est exécuté et fonctionne bien.
 
 ## Transfert de fichier de l'hôte à la vm :
-WINscp à venir...
+Maintenant, nous allons transférer un dossier contenant plusieurs pages web depuis notre windows 10 sur la VM à l'aide de WINSCP.</br>
+Tout d'abord il faut télécharger WINSCP :</br>
+<https://winscp.net/eng/download.php></br>
+Maintenant nous allons l'exécuter et basculer le dossier **hello** de mon bureau vers le /var/www/html de la VM.</br>
+Après avoir exécuté, il faut remplir les champs **Nom d'hôte**, **Nom d'utilisateur** et **Mot de passe** pour permettre au logiciel de se 
+connecter sur la VM en SSH :</br>
+[img 22]
+</br>
+Maintenant, sur la droite nous allons naviguer jusqu'a /var/www/html et sur la gauche à l'emplacement où se trouve mon dossier hello :</br>
+[img 23]
+</br>
+Nous avons juste à Drag&Drop le dossier **hello** de gauche à droite pour le copier sur la VM.</br>
+Après la copie nous vérifions que les pages sont accessibles :</br>
+[img 24]
