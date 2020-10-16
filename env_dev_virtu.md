@@ -23,7 +23,7 @@ Pour télécharger VSCode, il suffit de se rendre sur la page officiel et de té
 <https://code.visualstudio.com/download></br>
 Pour l'installer, idem que Vbox, cliquer sur l'installateur et installer. Pour installer le module SSH, il faut ouvrir VSCode et cliquer sur 
 **Extensions**, inscrire dans la barre de recherche **SSH** et installer **Remote - SSH** :</br>
-[image4]
+![Pic4](img/4.PNG?raw=true)
 
 Nous verrons plus tard comment se connecter en SSH à la VM.
 
@@ -35,11 +35,11 @@ Maintenant que nous avons le fichier iso, nous allons ouvrir VirtualBox et ajout
 on décide de **Créer un disque dur virtuel maintenant**. On laisse le type de fichier en **VDI (VirtualBox Disk Image)**, le stockage idem on laisse en 
 **Dynamiquement alloué** (si on alloue 50Go à la VM et qu'elle utilise seulement 5 Go, elle ne prendra pas les 45Go restants pour elle). En emplace du fichier et 
 taille nous laissons par défaut les valeurs (10Go me suffit emplement pour moi). </br>
-[image5]
+![Pic5](img/5.PNG?raw=true)
 </br>
 Et voila notre VM est créée, lorsque l'on va la démarrer (**démarrage**, **démarrage normal**) nous aurons une pop up pour aller chercher l'iso d'Ubuntu. Après cela,
 il faut simplement installer Ubuntu (les tuto sont légions sur l'internet).</br>
-[image6]
+![Pic6](img/6.PNG?raw=true)
 
 ## 4ème étape, sur la vm, configuration Ubuntu :
 Sur mon Ubuntu, j'ai un utilisateur test/test et root/toor (pour changer le mdp de root, c'est ci-dessous), nous allons installer les packages nécéssaires pour le SSH et LAMP (également des modules de PHP) :
@@ -58,10 +58,14 @@ Maintenant que Ubuntu est configuré, il faut faire la config réseau et la conf
 ## 5ème étape, sur l'hôte, réseau privé pour l'hôte et la vm :
 Nous allons créer un réseau seulement pour l'hôte et la vm, de ce fait, seul notre PC aura accès à la VM.</br>
 Pour ce faire, après avoir VirtualBox, cliquer sur **Fichier**, **Gestionnaire de réseau hôte**, **Créer**, adresse IPv4 : **172.16.0.1**, puis dans l'onglet **Serveur DHCP**, mettre le serveur en .100 et 2 à 10 en adresses distribuées :</br>
-[image 7 a 10]
+![Pic7](img/7.PNG?raw=true)</br>
+![Pic8](img/8.PNG?raw=true)</br>
+![Pic9](img/9.PNG?raw=true)</br>
+![Pic10](img/10.PNG?raw=true)
 </br>
 Maintenant, il faut associer la VM à ce réseau, clique droit sur la VM, **Configurations**, **Réseau**, **Mode d'accès réseau** : **Réseau privé hôte**, en Nom il faut mettre la carte que l'on a configuré précédemment :</br>
-[image 11 à 12]
+![Pic11](img/11.PNG?raw=true)</br>
+![Pic12](img/12.PNG?raw=true)
 </br>
 
 ## 6ème étape, vérifier la connectivité :
@@ -82,13 +86,16 @@ mais que l'inverse ne fonctionne pas. (Généralement à l'école on désactive 
 ## 7ème et dernière étape, sur l'hôte, configuration de VSCode :
 On lance VSCode, cliquer sur **Remote Explorer**, **Add new**, on met la commande ssh : **ssh root@172.16.0.3**, on laisse par défaut la première ligne on appuit juste
  sur entrer.</br>
-[image 13 a 15]
+![Pic13](img/13.PNG?raw=true)</br>
+![Pic14](img/14.PNG?raw=true)</br>
+![Pic15](img/15.PNG?raw=true)
 </br>
 Maintenant il suffit juste de cliquer sur le répertoire **Connect to Host in New Window** (il demandera le mot de passe de l'utilisateur qu'on a spécifié plus tôt) :</br>
-[image16]
+![Pic16](img/16.PNG?raw=true)
 </br>
 (pour accéder au terminal, il suffit d'aller sur l'onglet **view** puis **terminal** de la nouvelle fenetre qui s'est ouverte) :
-[image17]
+![Pic17](img/17.PNG?raw=true)
+
 ## Pour Créer un fichier, l'éditer et voir son résultat :
 Sur le terminal de VSCode, nous allons dans /var/www/html pour créer le fichier :
 ```bash
@@ -96,13 +103,14 @@ $ cd /var/www/html
 $ touch mapage.php
 ```
 Puis nous l'ouvrons dans VSCode, cliquer sur **File**, **Open File** et entrer le chemin jusqu'au fichier :</br>
-[img 18 et 19]
+![Pic18](img/18.PNG?raw=true)</br>
+![Pic19](img/19.PNG?raw=true)
 </br>
 Nous remplissons alors le fichier avec du code php :</br>
-[img 20]
+![Pic20](img/20.PNG?raw=true)
 </br>
 Après avoir sauvegardé (ctrl + s), nous nous rendons sur <http://172.16.0.3/mapage.php> pour voir si cela fonctionne :</br>
-[img 21]
+![Pic21](img/21.PNG?raw=true)
 </br>
 Et voila, le code php est exécuté et fonctionne bien.
 
@@ -113,11 +121,11 @@ Tout d'abord il faut télécharger WINSCP :</br>
 Maintenant nous allons l'exécuter et basculer le dossier **hello** de mon bureau vers le /var/www/html de la VM.</br>
 Après avoir exécuté, il faut remplir les champs **Nom d'hôte**, **Nom d'utilisateur** et **Mot de passe** pour permettre au logiciel de se 
 connecter sur la VM en SSH :</br>
-[img 22]
+![Pic22](img/22.PNG?raw=true)</br>
 </br>
 Maintenant, sur la droite nous allons naviguer jusqu'a **/var/www/html** et sur la gauche à l'emplacement où se trouve mon dossier hello :</br>
-[img 23]
+![Pic23](img/23.PNG?raw=true)
 </br>
 Nous avons juste à Drag&Drop le dossier **hello** de gauche à droite pour le copier sur la VM.</br>
 Après la copie nous vérifions que les pages sont accessibles :</br>
-[img 24]
+![Pic24](img/24.PNG?raw=true)
