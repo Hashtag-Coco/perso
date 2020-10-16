@@ -11,9 +11,7 @@ Avant de faire la configuration système, nous testerons la connectivité entre 
 Pour télécharger Vbox, il suffit de se rendre sur la page officiel et de télécharger l'installateur **ET** le pack d'extension (ce pack permet d'utiliser certaines 
 fonctionnalités à partir des VM) :</br>
 <https://www.virtualbox.org/wiki/Downloads></br>
-```
-![Pic1](img/1.PNG?raw=true)
-```
+![Pic1](img/1.PNG?raw=true)</br>
 Pour installer Vbox, il suffit d'exécuter l'exécutable, c'est une installation classique. Pour installer le pack d'extension, dans VirtualBox
 il faut cliquer sur **Fichier**, **Paramètres**, **Extensions**, cliquer sur le **+** et ajouter l'extension pack :</br>
 ![Pic2](img/2.PNG?raw=true)</br>
