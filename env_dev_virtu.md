@@ -15,7 +15,8 @@ fonctionnalités à partir des VM) :</br>
 
 Pour installer Vbox, il suffit d'exécuter l'exécutable, c'est une installation classique. Pour installer le pack d'extension, dans VirtualBox
 il faut cliquer sur **Fichier**, **Paramètres**, **Extensions**, cliquer sur le **+** et ajouter l'extension pack :</br>
-[image2][image3]
+![Pic2](img/2.PNG?raw=true)</br>
+![Pic3](img/3.PNG?raw=true)
 
 ## 2ème étape, sur l'hôte, installer VSCode et son module SSH :
 Pour télécharger VSCode, il suffit de se rendre sur la page officiel et de télécharger l'installateur :</br>
