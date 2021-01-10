@@ -5,15 +5,24 @@ Pour bien comprendre le pivot dans un réseau, on va y aller avec 3 machines en 
 ### Première partie
 ![Pic1](img/Pivot_1.PNG?raw=true)</br>
 ### Deuxième partie
-![Pic1](img/Pivot_2.PNG?raw=true)</br>
+![Pic2](img/Pivot_2.PNG?raw=true)</br>
 
 ## Première partie
 On commence par compromettre la Metasploitable pour avoir un shell root :
 ```bash
 $ bla bla
 ```
-![Pic1](img/Pivot_2.PNG?raw=true)</br>
+![Pic3](img/Pivot_X.PNG?raw=true)</br>
 
 ### Pivot Proxychains & SSH
+https://pentest.blog/explore-hidden-networks-with-double-pivoting/
 
 ### Pivot Meterpreter & Socks
+https://nullsweep.com/pivot-cheatsheet-for-pentesters/
+
+## Deuxième partie
+On commence par compromettre le Windows 7 pour avoir un accès administrateur :
+```bash
+$ bla bla
+```
+![Pic4](img/Pivot_X.PNG?raw=true)</br>
