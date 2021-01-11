@@ -59,8 +59,5 @@ $ proxychains nmap -p 135,139,445 192.168.0.110
 ![Pic6](img/Pivot_6.PNG?raw=true)</br>
 
 ## Deuxième partie
-On commence par compromettre le Windows 7 pour avoir un accès administrateur :
-```bash
-$ bla bla
-```
-![Pic4](img/Pivot_X.PNG?raw=true)</br>
+
+Pour un pivot Windows, refaire le pivot Meterpreter & Socks.
