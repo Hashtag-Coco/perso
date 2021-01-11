@@ -8,14 +8,20 @@ Pour bien comprendre le pivot dans un réseau, on va y aller avec 3 machines en 
 ![Pic2](img/Pivot_2.PNG?raw=true)</br>
 
 ## Première partie
-On commence par compromettre la Metasploitable pour avoir un shell root :
-```bash
-$ bla bla
-```
-![Pic3](img/Pivot_X.PNG?raw=true)</br>
 
 ### Pivot Proxychains & SSH
-https://pentest.blog/explore-hidden-networks-with-double-pivoting/
+Sur l'attaquant :
+```bash
+# Redirection ssh, tout le traffic qui va sur 9050 est redirigé en ssh vers 10.0.0.10
+# -f pour exécuter en tant que service
+# -N pour ne pas exécuter de commande
+# -D pour indiquer un port forwarding dynamique
+$ ssh -f -N -D 9050 msfadmin@10.0.0.10
+
+# Proxychain redirige tout le flux de la commande vers 9050 (son port par défaut dans /etc/proxychains.conf)
+$ proxychains nmap 192.168.0.110 -p 135,139,445
+```
+![Pic2](img/Pivot_3.PNG?raw=true)</br>
 
 ### Pivot Meterpreter & Socks
 https://nullsweep.com/pivot-cheatsheet-for-pentesters/
